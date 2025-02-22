@@ -48,7 +48,7 @@ const Footer = () => {
             <a href="https://www.instagram.com/qavisiontestlab/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-700 transition-all duration-300 hover:scale-110">
               <FaInstagram size={30} />
             </a>
-            <a href="https://www.linkedin.com/in/qavision-test-lab-819b69330/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-700 transition-all duration-300 hover:scale-110">
+            <a href="https://www.linkedin.com/company/qavision-test-lab-llp" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-700 transition-all duration-300 hover:scale-110">
               <FaLinkedin size={30} />
             </a>
             <a href="https://x.com/QAVisionTestLab" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-700 transition-all duration-300 hover:scale-110">
