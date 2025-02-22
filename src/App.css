@@ -1,0 +1,28 @@
+@font-face {
+  font-family: "Light";   /*Can be any text*/
+  src: local("Vercetti-Regular"),
+    url("./assets/fonts/Vercetti-Regular.ttf") format("truetype");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Light;
+}
+.placeholder-shown\:border-blue-gray-200:placeholder-shown {
+  border-color: rgb(255 255 255);
+}
+.bg-transparent {
+  background-color: white;
+}
+
+p{
+  font-size: 18px;
+}
+
+.footer-svg{
+  border-top: 1px solid #2196f3;
+
+}
+
