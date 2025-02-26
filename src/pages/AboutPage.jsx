@@ -8,10 +8,30 @@ import boy from '../assets/images/boy.png';
 import girl from'../assets/images/girl.png';
 import { FaBullseye, FaEye } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { Helmet } from "react-helmet-async";
 
 const AboutPage = () => {
   return (
     <div className="">
+                    <Helmet>
+                        <title>QAVisiontestlab</title>
+                        <title>Leading Software & Application Testing Company in India | About Us</title>
+                        <meta name="description" content="QA Vision is a leading software & web application testing company in India. We offer quality manual testing, function testing, and automation testing services. - qavisiontestlab.com" />
+                        <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                        <meta property="og:title" content="Leading Software & Application Testing Company in India | About Us" />
+                        <meta property="og:url" content="https://www.qavisiontestlab.com/about-us" />
+                        <meta property="og:type" content="website" />
+                        <meta property="og:description" content="QA Vision is a leading software & web application testing company in India. We offer quality manual testing, function testing, and automation testing services. - qavisiontestlab.com" />
+                        <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/soft-test.3a16a7cb7da41f660c8e.png" />
+                        <meta name="twitter:card" content="summary_large_image" />
+                        <meta property="twitter:domain" content="qavisiontestlab.com" />
+                        <meta property="twitter:url" content="https://www.qavisiontestlab.com/about-us" />
+                        <meta name="twitter:title" content="Leading Software & Application Testing Company in India | About Us" />
+                        <meta name="twitter:description" content="QA Vision is a leading software & web application testing company in India. We offer quality manual testing, function testing, and automation testing services. - qavisiontestlab.com" />
+                        <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/soft-test.3a16a7cb7da41f660c8e.png" />
+                        <body id="page-about-us" /> 
+                    </Helmet>
+
       {/* Hero Section */}
       <section className="flex flex-col items-center justify-center text-center text-dark ">
       <img 

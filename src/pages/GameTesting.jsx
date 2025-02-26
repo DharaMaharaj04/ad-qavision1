@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import gameTesting from "../assets/images/video-game.jpg";
 import MobileGame from "../assets/images/action-game.jpg";
 import desktopGame from "../assets/images/online-games.jpg";
+import { Helmet } from "react-helmet-async";
 
 const GameTestingPage = () => {
   const containerVariants = {
@@ -18,6 +19,26 @@ const GameTestingPage = () => {
 
   return (
     <div className="min-h-screen">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Best Game Testing Agency in India | Mobile &amp; Desktop Testing</title>
+                            <meta name="description" content="Top game testing services in India by the best game testing experts in India. We specialize in mobile & desktop game testing services for flawless performance.- qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                            <meta property="og:title" content="Best Game Testing Agency in India | Mobile & Desktop Testing" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/game-testing" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Top game testing services in India by the best game testing experts in India. We specialize in mobile & desktop game testing services for flawless performance.- qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/video-game.61281222190baab79248.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/game-testing" />
+                            <meta name="twitter:title" content="Best Game Testing Agency in India | Mobile & Desktop Testing" />
+                            <meta name="twitter:description" content="Top game testing services in India by the best game testing experts in India. We specialize in mobile & desktop game testing services for flawless performance. - qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/video-game.61281222190baab79248.jpg" />
+                            <body id="page-game-testing" /> 
+                        </Helmet>
+
       {/* Hero Section */}
       <div className="relative">
         <img

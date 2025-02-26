@@ -11,10 +11,31 @@ import InternshipHero from '../assets/images/InternshipProgram.jpg';
 import ManualTestingImage from '../assets/images/Manual Testing.jpg'; 
 import AutomationTestingImage from '../assets/images/Automation Testing Services.jpg'; 
 import SummerInternshipImage from '../assets/images/SUMMER_INTERNSHIP.jpg';
+import { Helmet } from "react-helmet-async";
 
 const Internship = () => {
   return (
     <div className="bg-gray-50">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Paid QA Internship Program | Manual & Automation Testing | QA Vision</title>
+                            <meta name="description" content="Join QA Vision’s Paid QA Internship Program. Gain hands-on experience in manual and automation testing. Apply now for summer internships! - qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI" />
+                            <meta property="og:title" content="Paid QA Internship Program | Manual & Automation Testing | QA Vision" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/internship" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Join QA Vision’s Paid QA Internship Program. Gain hands-on experience in manual and automation testing. Apply now for summer internships! - qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/InternshipProgram.ae8b4dca1ba54ca3bd11.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/internship" />
+                            <meta name="twitter:title" content="Paid QA Internship Program | Manual & Automation Testing | QA Vision" />
+                            <meta name="twitter:description" content="Join QA Vision’s Paid QA Internship Program. Gain hands-on experience in manual and automation testing. Apply now for summer internships! - qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/InternshipProgram.ae8b4dca1ba54ca3bd11.jpg" />
+                            <body id="page-internship" /> 
+                        </Helmet>
+
       {/* Hero Section */}
       <section
         className="relative bg-cover bg-center h-[500px] flex items-center justify-center"

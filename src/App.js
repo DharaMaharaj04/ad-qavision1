@@ -41,6 +41,10 @@ import CareerForm from "./pages/CareerForm";
 import ContactUs from "./pages/ContactUs";
 import IndustryPage from "./pages/IndustryPage";
 import NotFound from "./Components/NotFound";
+import blogs from "./pages/Blog";
+import { HelmetProvider } from "react-helmet-async";
+import Blog from "./pages/Blog";
+import SinglePost from "./pages/SinglePost";
 
 
 function App() {
@@ -49,6 +53,7 @@ function App() {
   return (
     <div className="relative">
       <Router>
+      <HelmetProvider>
       <div className="block md:hidden">
         <MobileNav />
       </div>
@@ -91,10 +96,14 @@ function App() {
           <Route path="/api-testing" element={<ApiTestingBenefits />} />
           <Route path="/carrers" element={<CareerForm />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/blogs" element={<Blog />} />
+          <Route path="/blogs/:id" element={<SinglePost />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <Footer></Footer>
+        </HelmetProvider>
       </Router>
+      
     </div>
   );
 }

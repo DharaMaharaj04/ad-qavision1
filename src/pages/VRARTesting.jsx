@@ -1,7 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import VR from "../assets/images/vr.png";
-import AR from "../assets/images/ar.jpg"
+import AR from "../assets/images/ar.jpg";
+import { Helmet } from "react-helmet-async";
 
 const VRARTesting = () => {
   const containerVariants = {
@@ -17,6 +18,26 @@ const VRARTesting = () => {
 
   return (
     <div className="bg-white">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Best VR/AR Testing Services in India | Expert Application Testing</title>
+                            <meta name="description" content="Leading VR/AR application testing company in India. We offer testing services for virtual and augmented reality applications for top-notch performance. - qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI" />
+                            <meta property="og:title" content="Best VR/AR Testing Services in India | Expert Application Testing" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/VARAR" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Leading VR/AR application testing company in India. We offer testing services for virtual and augmented reality applications for top-notch performance. - qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/vr.15937de3ee2d5b5c04ce.png" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/VARAR" />
+                            <meta name="twitter:title" content="Best VR/AR Testing Services in India | Expert Application Testing" />
+                            <meta name="twitter:description" content="Leading VR/AR application testing company in India. We offer testing services for virtual and augmented reality applications for top-notch performance. - qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/vr.15937de3ee2d5b5c04ce.png" />
+                            <body id="page-VAR-AR" /> 
+                        </Helmet>
+
       {/* Header Section */}
       <div className="relative">
         <img

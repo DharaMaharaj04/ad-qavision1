@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-
 import {
   AiOutlineRobot,
   AiOutlineAreaChart,
@@ -13,10 +12,31 @@ import IconAI  from "../assets/images/erp.jpg";
 import IconPredictive  from "../assets/images/vr.png"; 
 import IconSecurity  from "../assets/images/qalogo.png"; 
 import IconPerformance  from "../assets/images/ar.jpg"; 
+import { Helmet } from "react-helmet-async";
+
 
 const NextGenTesting = () => {
   return (
-    <div>
+    <div> 
+                          <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Next Generation Testing Services in India | Leading QA Solutions </title>
+                            <meta name="description" content="Hire the best next-generation testing services in India. Our solutions cover AI-powered testing, predictive analytics, performance testing, &amp; security testing.- qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                            <meta property="og:title" content="Next Generation Testing Services in India | Leading QA Solutions" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/nextgenaration-testing" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Hire the best next-generation testing services in India. Our solutions cover AI-powered testing, predictive analytics, performance testing, &amp; security testing. - qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/Next-Generation-Testing.8d465e4024d05999320c.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/nextgenaration-testing" />
+                            <meta name="twitter:title" content="Next Generation Testing Services in India | Leading QA Solutions" />
+                            <meta name="twitter:description" content="Hire the best next-generation testing services in India. Our solutions cover AI-powered testing, predictive analytics, performance testing, &amp; security testing.- qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/Next-Generation-Testing.8d465e4024d05999320c.jpg" />
+                            <body id="page-nextgenaration-testing" /> 
+                        </Helmet>
+
     {/* Full-Width Hero Section */}
     <section
       className="relative object-cover h-[500px] flex items-center justify-center text-white md:pt-20"

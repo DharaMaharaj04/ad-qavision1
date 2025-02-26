@@ -40,7 +40,7 @@ const Header = ({ topRef }) => {
               <ul className="ml-auto space-y-6 text-[#b0b2c3] absolute right-4 sm:right-4 md:right-6">
                 <li>
                   <a
-                    href="https://www.linkedin.com/in/qavision-test-lab-819b69330/"
+                    href="https://www.linkedin.com/company/qavision-test-lab-llp"
                     
                   >
                     <

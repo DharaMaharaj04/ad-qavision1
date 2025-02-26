@@ -5,6 +5,7 @@ import performance from "../assets/images/performance.png";
 import integration from "../assets/images/integration.png";
 import security from "../assets/images/secure.jpg";
 import banner from "../assets/images/Security_Testing.jpg";
+import { Helmet } from "react-helmet-async";
 
 const SecurityTesting = () => {
   const containerVariants = {
@@ -20,6 +21,26 @@ const SecurityTesting = () => {
 
   return (
     <div className="bg-white">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Best VAPT Security Testing Agency in India | Security Testing</title>
+                            <meta name="description" content="Hire the best VAPT security testing agency in India. We provide top-notch vulnerability assessments and security solutions for your systems. - qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, TESTING" />
+                            <meta property="og:title" content="Best VAPT Security Testing Agency in India | Security Testing" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/security-testing" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Hire the best VAPT security testing agency in India. We provide top-notch vulnerability assessments and security solutions for your systems. - qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/Security_Testing.813ae0b978c31df1ea9a.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/security-testing" />
+                            <meta name="twitter:title" content="Best VAPT Security Testing Agency in India | Security Testing" />
+                            <meta name="twitter:description" content="Hire the best VAPT security testing agency in India. We provide top-notch vulnerability assessments and security solutions for your systems. - qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/Security_Testing.813ae0b978c31df1ea9a.jpg" />
+                            <body id="page-security-testing" /> 
+                        </Helmet>
+
       {/* Hero Section */}
       <div
   className="relative w-full min-h-[500px] bg-center bg-no-repeat bg-contain"

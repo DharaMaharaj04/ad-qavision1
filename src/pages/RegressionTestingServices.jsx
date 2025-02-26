@@ -2,10 +2,31 @@ import React from 'react';
 import { BsCheckCircle } from 'react-icons/bs';
 import { FaCogs, FaClipboardCheck } from 'react-icons/fa';
 import RegressionTest from '../assets/images/performance_testing.png';
+import { Helmet } from "react-helmet-async";
 
 const ManualRegressionTesting = () => {
   return (
     <div className="">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>No #1 in Top Regression Testing Companies in India</title>
+                            <meta name="description" content="One of the best regression testing agencies in India. Our services include risk-based regression, performance impact analysis etc. to make optimal software performance.- qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                            <meta property="og:title" content="No #1 in Top Regression Testing Companies in India" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/regression-testing" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="One of the best regression testing agencies in India. Our services include risk-based regression, performance impact analysis etc. to make optimal software performance.- qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/performance_testing.4885461ba2c04ced1ac1.png" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/regression-testing" />
+                            <meta name="twitter:title" content="No #1 in Top Regression Testing Companies in India" />
+                            <meta name="twitter:description" content="One of the best regression testing agencies in India. Our services include risk-based regression, performance impact analysis etc. to make optimal software performance.- qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/performance_testing.4885461ba2c04ced1ac1.png" />
+                            <body id="page-regression-testing-service" /> 
+                        </Helmet>
+
     <div
       className="relative w-full min-h-[500px] bg-center bg-no-repeat bg-cover"
       style={{ backgroundImage: `url(${RegressionTest})` }}

@@ -1,9 +1,29 @@
 import { FaBolt, FaDatabase, FaUserShield, FaUniversalAccess } from "react-icons/fa";
 import PerformanceTest from '../assets/images/PRERFORMANCE_TESTING.jpg';
+import { Helmet } from "react-helmet-async";
 
 const PerformanceTestingSection = () => {
   return (
     <div className="">
+                          <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>Best Performance and Load Testing Company in India</title>
+                            <meta name="description" content="Top performance and load testing services in India. We offer the best testing including database and accessibility testing solutions in India.- qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                            <meta property="og:title" content="Best Performance and Load Testing Company in India" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/performance-testing" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Top performance and load testing services in India. We offer the best testing including database and accessibility testing solutions in India.- qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/PRERFORMANCE_TESTING.00e2b8c08d40a4d22b28.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/performance-testing" />
+                            <meta name="twitter:title" content="Best Performance and Load Testing Company in India" />
+                            <meta name="twitter:description" content="Top performance and load testing services in India. We offer the best testing including database and accessibility testing solutions in India.- qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/PRERFORMANCE_TESTING.00e2b8c08d40a4d22b28.jpg" />
+                            <body id="page-performance-testing" /> 
+                        </Helmet>
+
     <div
       className="relative w-full min-h-[500px] bg-center bg-no-repeat bg-contain"
       style={{ backgroundImage: `url(${PerformanceTest})` }}

@@ -203,7 +203,7 @@ export const navbarData = [
   {
     id: "4",
     name: "Blog",
-    link: "/Blog",
+    link: "/blogs",
   },
   {
     id: "5",

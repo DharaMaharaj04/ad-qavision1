@@ -9,10 +9,31 @@ import QAScrum from '../assets/images/QA cum Scrum Master Staffing Services in I
 import QADeliverable from '../assets/images/QA Deliverables and Management_5.jpg';
 import QAOutsourcing from '../assets/images/QA Outsourcing Services in India_6.jpg';
 import QAMethology from '../assets/images/Methodology.jpg';
+import { Helmet } from "react-helmet-async";
 
 const QAServicePage = () => {
   return (
     <div className="">
+
+    <Helmet>
+                            <title>QAVisiontestlab</title>
+                            <title>QA Management Services in India |Best QA Services</title>
+                            <meta name="description" content="Count on the best QA management company in India for effective quality assurance. We offer the best QA management solutions for quality project outcomes. - qavisiontestlab.com" />
+                            <meta name="keywords" content="React, SEO, Helmet, Web Development, QA, Automation, AI, Testing" />
+                            <meta property="og:title" content="QA Management Services in India |Best QA Services" />
+                            <meta property="og:url" content="https://www.qavisiontestlab.com/qa-management" />
+                            <meta property="og:type" content="website" />
+                            <meta property="og:description" content="Count on the best QA management company in India for effective quality assurance. We offer the best QA management solutions for quality project outcomes. - qavisiontestlab.com" />
+                            <meta property="og:image" content="https://www.qavisiontestlab.com/static/media/qamanagement-hero.5554d5b5dae5137d3cd4.jpg" />
+                            <meta name="twitter:card" content="summary_large_image" />
+                            <meta property="twitter:domain" content="qavisiontestlab.com" />
+                            <meta property="twitter:url" content="https://www.qavisiontestlab.com/qa-management" />
+                            <meta name="twitter:title" content="QA Management Services in India |Best QA Services" />
+                            <meta name="twitter:description" content="Count on the best QA management company in India for effective quality assurance. We offer the best QA management solutions for quality project outcomes. - qavisiontestlab.com" />
+                            <meta name="twitter:image" content="https://www.qavisiontestlab.com/static/media/qamanagement-hero.5554d5b5dae5137d3cd4.jpg" />
+                            <body id="page-qa-management" /> 
+                        </Helmet>
+
       <div className="container mx-auto px-4 py-10 space-y-12">
       <div
       className="relative w-full min-h-[500px] bg-center bg-no-repeat bg-contain"
