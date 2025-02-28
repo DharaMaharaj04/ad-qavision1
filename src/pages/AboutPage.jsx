@@ -4,8 +4,8 @@ import innovative from '../assets/images/soft-test.png';
 import Ingenuity from '../assets/images/Ingenuity.png';
 import Integrity from '../assets/images/Integrity.png';
 import Commitment from '../assets/images/Commitment.png';
-import boy from '../assets/images/boy.png';
-import girl from'../assets/images/girl.png';
+import aditya from '../assets/images/aditya_sonar.jpg';
+import rachna from'../assets/images/rachna_sonar.jpg';
 import { FaBullseye, FaEye } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { Helmet } from "react-helmet-async";
@@ -144,12 +144,12 @@ const AboutPage = () => {
         <h2 className="text-xl sm:text-xl md:text-5xl font-bold text-center text-[#2196f3] mb-8 animate-slide-in-left">Meet our Architect of QA Vision</h2>
         <div className="flex flex-wrap justify-center gap-6 px-4">
           <div className="w-80 bg-gray-50 p-6 text-center rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-            <img src={girl} alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
+            <img src={rachna} alt="Team Member" className="w-48 h-48 rounded-full mx-auto mb-4" />
             <h3 className="text-xl font-bold">Rachna Sonar</h3>
             <p className="text-gray-600">Co-Founder</p>
           </div>
           <div className="w-80 bg-gray-50 p-6 text-center rounded-lg shadow-md hover:scale-105 transition-transform duration-300">
-            <img src={boy} alt="Team Member" className="w-24 h-24 rounded-full mx-auto mb-4" />
+            <img src={aditya} alt="Team Member" className="w-48 h-48 rounded-full mx-auto mb-4" />
             <h3 className="text-xl font-bold">Aditya Sonar</h3>
             <p className="text-gray-600">Founder</p>
           </div>
