@@ -16,11 +16,27 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(formData);
-  };
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const response = await fetch('https://s1tdoyvmp1.execute-api.ap-south-1.amazonaws.com/prod/submit-form', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    });
+
+    const result = await response.json();
+    if (response.ok) {
+        alert('Form submitted successfully!');
+    } else {
+        alert('Submission failed: ' + result.message);
+    }
+};
+
+  
   return (
     <div className="min-h-screen">
       {/* Background Image Section */}
