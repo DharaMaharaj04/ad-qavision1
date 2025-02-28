@@ -55,12 +55,12 @@ const SinglePost = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                         {relatedPosts.map((blog) => (
                             <Link key={blog.id} to={`/blogs/${blog.id}`} className="block rounded-lg shadow-md overflow-hidden">
-                            {post._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
-                                <div 
-                                    className="w-full h-96 bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${post._embedded['wp:featuredmedia'][0].source_url})` }}
-                                />
-                            )}
+                                {blog._embedded?.['wp:featuredmedia']?.[0]?.source_url && (
+                                    <div 
+                                        className="w-full h-48 bg-cover bg-center"
+                                        style={{ backgroundImage: `url(${blog._embedded['wp:featuredmedia'][0].source_url})` }}
+                                    />
+                                )}
                                 <div className="p-4">
                                     <h3 className="text-lg font-semibold text-gray-800">{blog.title.rendered}</h3>
                                     <p className="text-sm text-gray-500 mt-1">{new Date(blog.date).toDateString()}</p>
