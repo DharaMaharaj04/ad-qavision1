@@ -89,7 +89,7 @@ const AboutPage = () => {
 
 
 <section className="py-16 px-4 sm:px-8 md:px-12 lg:px-24 bg-blue-300 overflow-hidden">
-<div className="absolute inset-0">
+<div className="absolute inset-0 pointer-events-none">
   <div className="w-full h-full opacity-30 rounded-full transform translate-x-1/2 translate-y-1/4 blur-3xl"></div>
 </div>
 <div className="md:flex items-center justify-between gap-8 z-10">

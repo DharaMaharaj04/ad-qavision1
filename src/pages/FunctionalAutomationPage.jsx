@@ -226,6 +226,17 @@ const FunctionalAutomationPage = () => {
           </motion.div>
         ))}
       </div>
+
+      <section className="text-center text-white bg-[#4daaf6] p-8 mt-8">
+      <h2 className="text-3xl font-bold mb-6">Functional Automation Testing Services In India</h2>
+      <p className="text-lg  mb-6">Connect with us for a quick consultation and your free quote.</p>
+      <a href='/contact-us'>
+      <button className="bg-white text-blue-600 py-3 px-6 rounded-lg text-lg shadow-md hover:text-white hover:bg-blue-600 transition duration-300">
+        Get a Quote
+      </button>
+      </a>
+    </section>
+
     </div>
     </div>
   );

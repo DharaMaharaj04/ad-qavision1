@@ -133,7 +133,7 @@ const APIAutomationTesting = () => {
      initial={{ opacity: 0, scale: 0.8 }}
      whileInView={{ opacity: 1, scale: 1 }}
      transition={{ duration: 1 }}
-     className="text-center py-12 bg-blue-100 rounded-lg my-16"
+     className="text-center text-white bg-[#4daaf6] p-8 mt-8"
    >
       <motion.p
         initial={{ opacity: 0, y: -30 }}
