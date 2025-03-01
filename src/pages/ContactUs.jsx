@@ -20,7 +20,7 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('https://s1tdoyvmp1.execute-api.ap-south-1.amazonaws.com/prod/submit-form', {
+    const response = await fetch('https://pqz3ha7c7g.execute-api.ap-south-1.amazonaws.com/prod/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
