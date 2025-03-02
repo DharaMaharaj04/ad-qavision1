@@ -50,11 +50,11 @@ const ContactUs = () => {
 
     // 🔥 Ensure the API expects these exact field names
     const payload = {
-      name: formData.fullName, // Some APIs expect "name" instead of "fullName"
+      fullName: formData.fullName,
       email: formData.email,
-      company: formData.companyName, // If API expects "company" instead of "companyName"
+      companyName: formData.companyName,
       phone: formData.phone,
-      message: formData.projectDescription, // If API expects "message"
+      projectDescription: formData.projectDescription,
     };
 
     console.log("📤 Sending Data:", JSON.stringify(payload, null, 2)); // Debugging
