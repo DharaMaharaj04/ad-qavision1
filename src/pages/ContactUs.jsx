@@ -20,7 +20,7 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('https://9yhevftg1f.execute-api.ap-south-1.amazonaws.com/default/SaveContactForm', {
+    const response = await fetch('https://camneseuyj.execute-api.ap-south-1.amazonaws.com/dev/contact', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
