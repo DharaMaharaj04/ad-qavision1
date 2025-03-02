@@ -16,44 +16,46 @@ const ContactUs = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  try {
-    const response = await fetch("https://qn6w3wmrr4.execute-api.ap-south-1.amazonaws.com/dev/contactFormHandler", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
+    try {
+      const response = await fetch(
+        "https://qn6w3wmrr4.execute-api.ap-south-1.amazonaws.com/dev/contactFormHandler",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
-    if (response.ok) {
-      const data = await response.json();
-      alert("Message sent successfully!");
-      setFormData({
-        fullName: "",
-        email: "",
-        companyName: "",
-        phone: "",
-        projectDescription: "",
-      });
-    } else {
-      alert("Failed to send message. Please try again.");
+      if (response.ok) {
+        const data = await response.json();
+        alert("Message sent successfully!");
+        setFormData({
+          fullName: "",
+          email: "",
+          companyName: "",
+          phone: "",
+          projectDescription: "",
+        });
+      } else {
+        alert("Failed to send message. Please try again.");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Something went wrong. Please check your connection.");
     }
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Something went wrong. Please check your connection.");
-  }
-};
-
+  };
 
   return (
     <div className="min-h-screen">
       {/* Background Image Section */}
       <div
-        className="relative w-full min-h-[400px] bg-center bg-no-repeat bg-contain"
-        style={{ backgroundImage: url({image}) }}
+        className="relative w-full min-h-[400px] bg-center bg-no-repeat bg-cover"
+        style={{ backgroundImage: `url(${image})` }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
           <h2 className="text-white text-4xl font-bold sm:text-5xl text-center">
