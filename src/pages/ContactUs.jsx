@@ -14,22 +14,17 @@ const ContactUs = () => {
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  
-
-  // 🛠 Validation function
+  // 🛠 Validation function (Phone validation removed)
   const validateForm = () => {
     let newErrors = {};
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const phoneRegex = /^\+?[1-9]\d{9,14}$/;
 
     if (!formData.fullName.trim()) newErrors.fullName = "Full Name is required.";
-  if (!formData.email.trim() || !emailRegex.test(formData.email))
-    newErrors.email = "Enter a valid email address.";
-  if (!formData.companyName.trim()) newErrors.companyName = "Company Name is required.";
-  if (!formData.phone.trim() || !phoneRegex.test(formData.phone))
-    newErrors.phone = "Enter a valid phone number (e.g., +919876543210).";
-  if (!formData.projectDescription.trim())
-    newErrors.projectDescription = "Project Description is required.";
+    if (!formData.email.trim() || !emailRegex.test(formData.email))
+      newErrors.email = "Enter a valid email address.";
+    if (!formData.companyName.trim()) newErrors.companyName = "Company Name is required.";
+    if (!formData.projectDescription.trim())
+      newErrors.projectDescription = "Project Description is required.";
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -55,7 +50,7 @@ const ContactUs = () => {
       fullName: formData.fullName,
       email: formData.email,
       companyName: formData.companyName,
-      phone: formData.phone,
+      phone: formData.phone, // Phone validation removed
       projectDescription: formData.projectDescription,
     };
 
@@ -151,7 +146,7 @@ const ContactUs = () => {
             {Object.keys(formData).map((field, index) => (
               <div key={index}>
                 <input
-                  type={field === "email" ? "email" : field === "phone" ? "tel" : "text"}
+                  type={field === "email" ? "email" : "text"} // Phone input is treated as text
                   name={field}
                   value={formData[field]}
                   onChange={handleInputChange}
