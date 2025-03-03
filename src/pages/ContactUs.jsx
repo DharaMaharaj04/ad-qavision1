@@ -59,7 +59,7 @@ const ContactUs = () => {
       projectDescription: formData.projectDescription,
     };
 
-    console.log("📤 Sending Data:", JSON.stringify(payload, null, 2)); // Debugging
+    //console.log("📤 Sending Data:", JSON.stringify(payload, null, 2)); // Debugging
 
     try {
       const response = await fetch(
@@ -74,7 +74,7 @@ const ContactUs = () => {
       );
 
       const responseData = await response.json(); // 🔥 Convert response to JSON
-      console.log("📥 API Response:", responseData); // Debugging
+     // console.log("📥 API Response:", responseData); // Debugging
 
       if (response.ok) {
         alert("✅ Message sent successfully!");
