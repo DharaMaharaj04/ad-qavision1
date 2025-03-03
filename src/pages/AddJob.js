@@ -7,8 +7,8 @@ const AddJob = () => {
   const [job, setJob] = useState({
     title: "",
     description: "",
-    company: "",
     location: "",
+    positions: "",
   });
 
   const handleChange = (e) => {
@@ -31,7 +31,7 @@ const AddJob = () => {
       <h2 className="text-2xl font-bold mb-4">Add Job Vacancy</h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <input type="text" name="title" placeholder="Job Title" className="input" onChange={handleChange} required />
-        <input type="text" name="company" placeholder="Company Name" className="input" onChange={handleChange} required />
+        <input type="text" name="positions"  placeholder="Position Name" className="input" onChange={handleChange} required />
         <input type="text" name="location" placeholder="Location" className="input" onChange={handleChange} required />
         <textarea name="description" placeholder="Job Description" className="input" onChange={handleChange} required />
         <button type="submit" className="btn">Add Job</button>
