@@ -94,8 +94,8 @@ function App() {
           <Route path="/ui-ux-testing" element={<AdvancedUIUXTesting />} />
           <Route path="/functional-manual-tesing" element={<ManualTestingServices />} />
           <Route path="/api-testing" element={<ApiTestingBenefits />} />
-          <Route path="/adity-carrers-post" element={<CareerForm />} />
-          <Route path="/apply/:id" element={<ApplyPage />} />
+          <Route path="/careers" element={<CareerForm />} />
+          <Route path="//apply/:jobId" element={<ApplyPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blogs/:id" element={<SinglePost />} />
