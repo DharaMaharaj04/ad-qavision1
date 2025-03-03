@@ -45,7 +45,7 @@ import blogs from "./pages/Blog";
 import { HelmetProvider } from "react-helmet-async";
 import Blog from "./pages/Blog";
 import SinglePost from "./pages/SinglePost";
-
+import ApplyPage from "./pages/ApplyPage";
 
 function App() {
   //const sectionTop = useRef();
