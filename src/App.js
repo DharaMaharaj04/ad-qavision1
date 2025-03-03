@@ -45,6 +45,7 @@ import { HelmetProvider } from "react-helmet-async";
 import Blog from "./pages/Blog";
 import SinglePost from "./pages/SinglePost";
 import ApplyPage from "./pages/ApplyPage";
+import AddJob from "./pages/AddJob";
 
 function App() {
   //const sectionTop = useRef();
@@ -94,6 +95,7 @@ function App() {
           <Route path="/functional-manual-tesing" element={<ManualTestingServices />} />
           <Route path="/api-testing" element={<ApiTestingBenefits />} />
           <Route path="/careers" element={<CareerForm />} />
+          <Route path="/add-job" element={<AddJob />} />
           <Route path="/apply/:jobId" element={<ApplyPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blogs" element={<Blog />} />
