@@ -63,7 +63,7 @@ const ContactUs = () => {
 
     try {
       const response = await fetch(
-        "https://qn6w3wmrr4.execute-api.ap-south-1.amazonaws.com/dev/contactFormHandler",
+        "https://hhouoolvu1.execute-api.ap-south-1.amazonaws.com/dev/contactFormHandler",
         {
           method: "POST",
           headers: {
