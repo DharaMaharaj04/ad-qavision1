@@ -41,7 +41,6 @@ import CareerForm from "./pages/CareerForm";
 import ContactUs from "./pages/ContactUs";
 import IndustryPage from "./pages/IndustryPage";
 import NotFound from "./Components/NotFound";
-import blogs from "./pages/Blog";
 import { HelmetProvider } from "react-helmet-async";
 import Blog from "./pages/Blog";
 import SinglePost from "./pages/SinglePost";
@@ -95,7 +94,7 @@ function App() {
           <Route path="/functional-manual-tesing" element={<ManualTestingServices />} />
           <Route path="/api-testing" element={<ApiTestingBenefits />} />
           <Route path="/careers" element={<CareerForm />} />
-          <Route path="//apply/:jobId" element={<ApplyPage />} />
+          <Route path="/apply/:jobId" element={<ApplyPage />} />
           <Route path="/contact-us" element={<ContactUs />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/blogs/:id" element={<SinglePost />} />
