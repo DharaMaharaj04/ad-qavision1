@@ -213,7 +213,7 @@ export const navbarData = [
   {
     id: "6",
     name: "Career",
-    link: "/carrers",
+    link: "/careers",
   },
 ];
 

@@ -29,7 +29,7 @@ const CareerForm = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 py-8 mt-4 md:mt-16">
       <div className="max-w-4xl mx-auto px-4">
         <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">
           Job Listings

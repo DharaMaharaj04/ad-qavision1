@@ -44,7 +44,7 @@ const Footer = () => {
                 { label: "About Us", link: "/about-us" },
                 { label: "Industries", link: "/industries" },
                 { label: "Blogs", link: "/blogs" },
-                { label: "Career", link: "/carrers" },
+                { label: "Career", link: "/careers" },
                 { label: "Contact Us", link: "/contact-us" },
               ].map((item, index) => (
                 <li key={index}>
