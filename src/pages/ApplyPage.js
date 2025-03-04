@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// Helper to extract value from DynamoDB attribute format
+const getValue = (attr) => {
+  if (!attr) return "";
+  return typeof attr === "object" && "S" in attr ? attr.S : attr;
+};
+
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
@@ -45,13 +51,11 @@ const ApplyPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // Create a FormData object to include file upload and text fields
       const formData = new FormData();
       formData.append("fullName", application.fullName);
       formData.append("phone", application.phone);
       formData.append("email", application.email);
       formData.append("experience", application.experience);
-      // Auto-populate the jobId (or you may use job title)
       formData.append("jobId", jobId);
       if (cvFile) {
         formData.append("cv", cvFile);
@@ -69,7 +73,6 @@ const ApplyPage = () => {
         throw new Error(errorData.error || "Failed to submit application");
       }
       alert("Application Submitted Successfully!");
-      // Optionally reset form
       setApplication({ fullName: "", phone: "", email: "", experience: "" });
       setCvFile(null);
     } catch (error) {
@@ -82,17 +85,27 @@ const ApplyPage = () => {
 
   if (!job) {
     return (
-      <div className="flex items-center justify-center bg-gray-100">
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
         <p className="text-gray-600">Loading job details...</p>
       </div>
     );
   }
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center py-10 px-4">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full">
         {/* Job Details */}
-        
+        <div className="mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">
+            Apply for {getValue(job.title)}
+          </h2>
+          <p className="text-gray-600 mb-1">
+            <strong>Location:</strong> {getValue(job.location)}
+          </p>
+          <p className="text-gray-600 mb-1">
+            <strong>Description:</strong> {getValue(job.description)}
+          </p>
+        </div>
         {/* Application Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
@@ -148,7 +161,7 @@ const ApplyPage = () => {
               type="text"
               name="applyForPost"
               id="applyForPost"
-              value={job.title}
+              value={getValue(job.title)}
               readOnly
               className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
             />
