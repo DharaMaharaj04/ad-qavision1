@@ -35,7 +35,7 @@ const AddJob = () => {
         throw new Error(errorData.error || "Failed to add job");
       }
       alert("Job Added Successfully!");
-      navigate("/");
+      navigate("/add-job");
     } catch (error) {
       console.error("Error adding job:", error);
       alert(`Error: ${error.message}`);
