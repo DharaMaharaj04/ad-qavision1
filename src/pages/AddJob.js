@@ -67,14 +67,14 @@ const AddJob = () => {
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700">
-              Position Name
+             Number of Position
             </label>
             <input
               type="text"
               name="positions"
               value={job.positions}
               onChange={handleChange}
-              placeholder="Enter position name"
+              placeholder="Enter total positions"
               required
               className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"
             />
