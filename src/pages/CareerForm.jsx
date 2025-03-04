@@ -8,7 +8,7 @@ const CareerForm = () => {
   useEffect(() => {
     const fetchJobs = async () => {
       try {
-        const response = await axios.get("https://cl80il2pef.execute-api.ap-south-1.amazonaws.com/jobs");
+        const response = await axios.get("https://cl80il2pef.execute-api.ap-south-1.amazonaws.com/dev/jobs");
         setJobs(response.data);
       } catch (error) {
         console.error("Error fetching jobs:", error);
