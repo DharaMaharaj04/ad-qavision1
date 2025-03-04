@@ -19,7 +19,7 @@ const Footer = () => {
               </a>
             </div>
 
-            <div className="flex justify-center lg:justify-start space-x-6 text-white md:text-black mt-4">
+            <div className="flex justify-center lg:justify-start space-x-6 text-black mt-4">
               <a href="https://www.instagram.com/qavisiontestlab/" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-700 transition-all duration-300 hover:scale-110">
                 <FaInstagram size={30} />
               </a>
@@ -37,8 +37,8 @@ const Footer = () => {
 
           {/* Explore Section */}
           <div className="text-center lg:text-left">
-            <h2 className="text-3xl font-bold mb-6 tracking-wide text-white md:text-black">Explore</h2>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-white md:text-black">
+            <h2 className="text-3xl font-bold mb-6 tracking-wide text-black">Explore</h2>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-black">
               {[
                 { label: "Home", link: "/" },
                 { label: "About Us", link: "/about-us" },
@@ -58,7 +58,7 @@ const Footer = () => {
 
           {/* Contact Info */}
           <div className="text-center lg:text-left space-y-6">
-            <h2 className="text-3xl font-bold mb-6 tracking-wide text-white md:text-black">Contact Us</h2>
+            <h2 className="text-3xl font-bold mb-6 tracking-wide text-black">Contact Us</h2>
             
             <p className="text-lg flex items-center">
             <FaPhoneVolume className="mr-2 text-xl" />
