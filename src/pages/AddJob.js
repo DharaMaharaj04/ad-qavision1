@@ -45,8 +45,8 @@ const AddJob = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-4 mt-4 md:mt-16">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg">
+    <div className="bg-gray-100 flex items-center justify-center px-4">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-lg mt-4 md:mt-16">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
           Add Job Vacancy
         </h2>

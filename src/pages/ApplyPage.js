@@ -82,27 +82,17 @@ const ApplyPage = () => {
 
   if (!job) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="flex items-center justify-center bg-gray-100">
         <p className="text-gray-600">Loading job details...</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
+    <div className="bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full">
         {/* Job Details */}
-        <div className="mb-6">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Apply for {job.title}
-          </h2>
-          <p className="text-gray-600 mb-1">
-            <strong>Location:</strong> {job.location}
-          </p>
-          <p className="text-gray-600 mb-1">
-            <strong>Description:</strong> {job.description}
-          </p>
-        </div>
+        
         {/* Application Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
