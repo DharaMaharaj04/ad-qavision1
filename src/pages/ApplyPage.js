@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-// Helper to extract value from DynamoDB attribute format
+// Helper function to extract a string value from a DynamoDB attribute (if needed)
 const getValue = (attr) => {
   if (!attr) return "";
-  return typeof attr === "object" && "S" in attr ? attr.S : attr;
+  return typeof attr === "object" && attr.S ? attr.S : attr;
 };
 
 const ApplyPage = () => {
@@ -30,6 +30,7 @@ const ApplyPage = () => {
           throw new Error(`Error fetching job details: ${response.status}`);
         }
         const data = await response.json();
+        console.log("Fetched job:", data); // Log to check data format
         setJob(data);
       } catch (error) {
         console.error("Error fetching job details:", error);
@@ -97,13 +98,13 @@ const ApplyPage = () => {
         {/* Job Details */}
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Apply for {getValue(job.title)}
+            Apply for {job ? getValue(job.title) : ""}
           </h2>
           <p className="text-gray-600 mb-1">
-            <strong>Location:</strong> {getValue(job.location)}
+            <strong>Location:</strong> {job ? getValue(job.location) : ""}
           </p>
           <p className="text-gray-600 mb-1">
-            <strong>Description:</strong> {getValue(job.description)}
+            <strong>Description:</strong> {job ? getValue(job.description) : ""}
           </p>
         </div>
         {/* Application Form */}
@@ -161,7 +162,7 @@ const ApplyPage = () => {
               type="text"
               name="applyForPost"
               id="applyForPost"
-              value={getValue(job.title)}
+              value={job ? getValue(job.title) : ""}
               readOnly
               className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
             />
