@@ -36,4 +36,4 @@ const ApplyPage = () => {
   return <div>Check your console for job data output.</div>;
 };
 
-export default ApplyData;
+export default ApplyPage;
