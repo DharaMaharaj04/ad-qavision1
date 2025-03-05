@@ -98,8 +98,8 @@ const ApplyPage = () => {
     typeof job.title === "object" ? getValue(job.title) : job.title;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
-      <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full">
+    <div className="bg-gray-100 flex items-center justify-center py-10 px-4">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full mt-4 md:mt-16">
         {/* Job Details */}
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
