@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
-  const [application, setApplication] = useState({ fullName: "", phone: "", email: "", experience: "" });
+  const [application, setApplication] = useState({ fullName: "", phone: "", email: "" });
   const [cvFile, setCvFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -26,24 +26,55 @@ const ApplyPage = () => {
 
   const handleFileChange = (e) => setCvFile(e.target.files[0]);
 
+  const convertFileToBase64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        const base64String = reader.result.split(",")[1]; // Remove metadata
+        resolve(base64String);
+      };
+      reader.onerror = reject;
+    });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+
     try {
-      const formData = new FormData();
-      formData.append("fullName", application.fullName);
-      formData.append("phone", application.phone);
-      formData.append("email", application.email);
-      formData.append("experience", application.experience);
-      formData.append("jobId", jobId);
-      if (cvFile) formData.append("cv", cvFile);
+      if (!cvFile) {
+        alert("Please upload a resume");
+        setIsSubmitting(false);
+        return;
+      }
 
-      const response = await fetch("https://ha59zbszd3.execute-api.ap-south-1.amazonaws.com/dev/applications", { method: "POST", body: formData });
+      const base64Resume = await convertFileToBase64(cvFile);
 
-      if (!response.ok) throw new Error("Failed to submit application");
+      const payload = {
+        fullName: application.fullName,
+        phone: application.phone,
+        email: application.email,
+        jobId,
+        resume: base64Resume,
+      };
+
+      const response = await fetch(
+        "https://ha59zbszd3.execute-api.ap-south-1.amazonaws.com/dev/applications",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        }
+      );
+
+      const responseData = await response.json();
+      console.log("Server Response:", responseData);
+
+      if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
       alert("Application Submitted Successfully!");
-      setApplication({ fullName: "", phone: "", email: "", experience: "" });
+      setApplication({ fullName: "", phone: "", email: "" });
       setCvFile(null);
     } catch (error) {
       alert("Error applying for job: " + error.message);
@@ -61,7 +92,7 @@ const ApplyPage = () => {
         <form onSubmit={handleSubmit} className="space-y-5">
           <input type="text" name="fullName" value={application.fullName} onChange={handleChange} required className="w-full p-2 border" placeholder="Full Name" />
           <input type="email" name="email" value={application.email} onChange={handleChange} required className="w-full p-2 border" placeholder="Email" />
-          <input type="text" name="experience" value={application.experience} onChange={handleChange} required className="w-full p-2 border" placeholder="Experience" />
+          <input type="text" name="phone" value={application.phone} onChange={handleChange} required className="w-full p-2 border" placeholder="Phone Number" />
           <input type="file" accept=".pdf" onChange={handleFileChange} required className="w-full p-2 border" />
           <button type="submit" disabled={isSubmitting} className="bg-blue-500 text-white py-2 px-4 rounded">
             {isSubmitting ? "Submitting..." : "Submit"}
