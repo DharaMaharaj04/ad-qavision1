@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-// Helper function to extract plain value if necessary (if API returns raw DynamoDB attributes)
+// Helper function to extract string value from DynamoDB attribute format (if needed)
 const getValue = (attr) => {
   if (!attr) return "";
   return typeof attr === "object" && attr.S ? attr.S : attr;
@@ -23,12 +23,11 @@ const ApplyPage = () => {
   useEffect(() => {
     const fetchJobDetails = async () => {
       try {
-        // Update this URL to match your GET job-by-ID endpoint
         const response = await fetch(
-          `https://cl80il2pef.execute-api.ap-south-1.amazonaws.com/dev/jobs/${jobId}`
+          "https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/dev/jobs/${jobId}"
         );
         if (!response.ok) {
-          throw new Error(`Error fetching job details: ${response.status}`);
+          throw new Error('Error fetching job details: ${response.status}');
         }
         const data = await response.json();
         console.log("Fetched job data:", data);
@@ -54,7 +53,6 @@ const ApplyPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      // Build FormData object for multipart/form-data
       const formData = new FormData();
       formData.append("fullName", application.fullName);
       formData.append("phone", application.phone);
@@ -72,12 +70,10 @@ const ApplyPage = () => {
           body: formData,
         }
       );
-      
       if (!response.ok) {
         const errorData = await response.json();
         throw new Error(errorData.error || "Failed to submit application");
       }
-      
       alert("Application Submitted Successfully!");
       setApplication({ fullName: "", phone: "", email: "", experience: "" });
       setCvFile(null);
@@ -97,10 +93,12 @@ const ApplyPage = () => {
     );
   }
 
-  const displayedTitle = typeof job.title === "object" ? getValue(job.title) : job.title;
+  // Determine the displayed title:
+  const displayedTitle =
+    typeof job.title === "object" ? getValue(job.title) : job.title;
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
+    <div className="bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full mt-4 md:mt-16">
         {/* Job Details */}
         <div className="mb-6">
