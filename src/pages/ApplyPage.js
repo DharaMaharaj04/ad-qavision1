@@ -1,39 +1,60 @@
-import React, { useEffect } from "react";
-import { useParams } from "react-router-dom";
+const { DynamoDBClient, GetItemCommand } = require("@aws-sdk/client-dynamodb");
+const { unmarshall } = require("@aws-sdk/util-dynamodb");
 
-const DebugJobData = () => {
-  const { jobId } = useParams();
+// Initialize DynamoDB Client
+const client = new DynamoDBClient({ region: "ap-south-1" });
+const TABLE_NAME = "JobPosts";
 
-  useEffect(() => {
-    const fetchJobData = async () => {
-      try {
-        const response = await fetch(
-          `https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/jobs/${jobId}`
-        );
-        if (!response.ok) {
-          throw new Error(`Error fetching job details: ${response.status}`);
-        }
-        const data = await response.json();
-        console.log("Fetched job data:", data);
-        // If your API returns a DynamoDB raw object, it might be wrapped in attributes like { S: "value" }
-        if (Array.isArray(data)) {
-          console.log("Title:", data[0].title);
-          console.log("Location:", data[0].location);
-          console.log("Description:", data[0].description);
-        } else {
-          console.log("Title:", data.title);
-          console.log("Location:", data.location);
-          console.log("Description:", data.description);
-        }
-      } catch (error) {
-        console.error("Error fetching job data:", error);
+exports.handler = async (event) => {
+  try {
+    // Extract jobId from path parameters
+    const jobId = event.pathParameters && event.pathParameters.jobId;
+    if (!jobId) {
+      return {
+        statusCode: 400,
+        headers: corsHeaders(),
+        body: JSON.stringify({ error: "Job ID is required" }),
+      };
+    }
+    
+    const params = {
+      TableName: TABLE_NAME,
+      Key: {
+        jobId: { S: jobId }
       }
     };
-
-    fetchJobData();
-  }, [jobId]);
-
-  return <div>Check your console for job data output.</div>;
+    
+    const data = await client.send(new GetItemCommand(params));
+    
+    if (!data.Item) {
+      return {
+        statusCode: 404,
+        headers: corsHeaders(),
+        body: JSON.stringify({ error: "Job not found" }),
+      };
+    }
+    
+    // Convert DynamoDB item to a plain object
+    const job = unmarshall(data.Item);
+    
+    return {
+      statusCode: 200,
+      headers: corsHeaders(),
+      body: JSON.stringify(job),
+    };
+  } catch (error) {
+    console.error("Error fetching job:", error);
+    return {
+      statusCode: 500,
+      headers: corsHeaders(),
+      body: JSON.stringify({ error: "Internal Server Error", details: error.message }),
+    };
+  }
 };
 
-export default DebugJobData;
+const corsHeaders = () => ({
+  "Access-Control-Allow-Origin": "https://www.qavisiontestlab.com",
+  "Access-Control-Allow-Credentials": "true",
+  "Access-Control-Allow-Methods": "GET, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type, Authorization",
+});
