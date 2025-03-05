@@ -75,7 +75,16 @@ const ApplyPage = () => {
       alert("Application Submitted Successfully!");
       setApplication({ fullName: "", phone: "", email: "", resume: "" });
     } catch (error) {
-      alert("Error applying for job: " + error.message);
+      console.error("Error applying for job:", error);
+return {
+  statusCode: 500,
+  headers: corsHeaders,
+  body: JSON.stringify({
+    error: "Failed to submit application",
+    details: error.message, // Include detailed error
+    stack: error.stack, // Optional: Include stack trace for debugging
+  }),
+};
     } finally {
       setIsSubmitting(false);
     }
