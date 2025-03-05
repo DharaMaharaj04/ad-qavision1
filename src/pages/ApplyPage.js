@@ -16,7 +16,7 @@ const ApplyPage = () => {
     email: "",
     experience: "",
   });
-  const [cvFile, setCvFile] = useState(null);
+  
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Fetch job details using jobId
@@ -59,9 +59,7 @@ const ApplyPage = () => {
       formData.append("email", application.email);
       formData.append("experience", application.experience);
       formData.append("jobId", jobId);
-      if (cvFile) {
-        formData.append("cv", cvFile);
-      }
+      
       
       const response = await fetch(
         "https://ha59zbszd3.execute-api.ap-south-1.amazonaws.com/dev/applications",
@@ -76,7 +74,7 @@ const ApplyPage = () => {
       }
       alert("Application Submitted Successfully!");
       setApplication({ fullName: "", phone: "", email: "", experience: "" });
-      setCvFile(null);
+      
     } catch (error) {
       console.error("Error applying for job:", error);
       alert("Error applying for job: " + error.message);
@@ -189,20 +187,7 @@ const ApplyPage = () => {
               className="mt-1 block w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-blue-500"
             />
           </div>
-          <div>
-            <label htmlFor="cv" className="block text-sm font-medium text-gray-700">
-              Upload CV
-            </label>
-            <input
-              type="file"
-              name="cv"
-              id="cv"
-              accept=".pdf,.doc,.docx"
-              onChange={handleFileChange}
-              required
-              className="mt-1 block w-full text-gray-600"
-            />
-          </div>
+          
           <div>
             <button
               type="submit"
