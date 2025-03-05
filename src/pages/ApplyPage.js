@@ -24,7 +24,7 @@ const ApplyPage = () => {
     const fetchJobDetails = async () => {
       try {
         const response = await fetch(
-          `https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/jobs/${jobId}`
+          `https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/dev/jobs/${jobId}`
         );
         if (!response.ok) {
           throw new Error(`Error fetching job details: ${response.status}`);
