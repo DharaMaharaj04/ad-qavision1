@@ -4,8 +4,7 @@ import { useParams } from "react-router-dom";
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
-  const [application, setApplication] = useState({ fullName: "", phone: "", email: "" });
-  const [cvFile, setCvFile] = useState(null);
+  const [application, setApplication] = useState({ fullName: "", phone: "", email: "", resume: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -24,18 +23,20 @@ const ApplyPage = () => {
 
   const handleChange = (e) => setApplication({ ...application, [e.target.name]: e.target.value });
 
-  const handleFileChange = (e) => setCvFile(e.target.files[0]);
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      const base64String = reader.result.split(",")[1]; // Remove metadata
+      setApplication((prevState) => ({ ...prevState, resume: base64String }));
+    };
 
-  const convertFileToBase64 = (file) => {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = () => {
-        const base64String = reader.result.split(",")[1]; // Remove metadata
-        resolve(base64String);
-      };
-      reader.onerror = reject;
-    });
+    reader.onerror = (error) => {
+      console.error("Error reading file:", error);
+      alert("Failed to read file. Please try again.");
+    };
   };
 
   const handleSubmit = async (e) => {
@@ -43,20 +44,18 @@ const ApplyPage = () => {
     setIsSubmitting(true);
 
     try {
-      if (!cvFile) {
+      if (!application.resume) {
         alert("Please upload a resume");
         setIsSubmitting(false);
         return;
       }
-
-      const base64Resume = await convertFileToBase64(cvFile);
 
       const payload = {
         fullName: application.fullName,
         phone: application.phone,
         email: application.email,
         jobId,
-        resume: base64Resume,
+        resume: application.resume,
       };
 
       const response = await fetch(
@@ -74,8 +73,7 @@ const ApplyPage = () => {
       if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
       alert("Application Submitted Successfully!");
-      setApplication({ fullName: "", phone: "", email: "" });
-      setCvFile(null);
+      setApplication({ fullName: "", phone: "", email: "", resume: "" });
     } catch (error) {
       alert("Error applying for job: " + error.message);
     } finally {
