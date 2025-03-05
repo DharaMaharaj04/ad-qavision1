@@ -1,65 +1,39 @@
-const { DynamoDBClient, GetItemCommand } = require("@aws-sdk/client-dynamodb");
-const { unmarshall } = require("@aws-sdk/util-dynamodb");
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
-const client = new DynamoDBClient({ region: "ap-south-1" });
-const TABLE_NAME = "JobPosts";
+const ApplyPage = () => {
+  const { jobId } = useParams();
 
-exports.handler = async (event) => {
-  try {
-    console.log("Received event:", JSON.stringify(event, null, 2));
-    
-    // Assuming you're using Lambda Proxy Integration with API Gateway,
-    // the jobId should be in event.pathParameters
-    const jobId = event.pathParameters ? event.pathParameters.jobId : null;
-    
-    if (!jobId) {
-      return {
-        statusCode: 400,
-        body: JSON.stringify({ error: "Job ID is required" })
-      };
-    }
-    
-    const params = {
-      TableName: TABLE_NAME,
-      Key: {
-        jobId: { S: jobId }
+  useEffect(() => {
+    const fetchJobData = async () => {
+      try {
+        const response = await fetch(
+          `https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/jobs/${jobId}`
+        );
+        if (!response.ok) {
+          throw new Error(`Error fetching job details: ${response.status}`);
+        }
+        const data = await response.json();
+        console.log("Fetched job data:", data);
+        // If your API returns a DynamoDB raw object, it might be wrapped in attributes like { S: "value" }
+        if (Array.isArray(data)) {
+          console.log("Title:", data[0].title);
+          console.log("Location:", data[0].location);
+          console.log("Description:", data[0].description);
+        } else {
+          console.log("Title:", data.title);
+          console.log("Location:", data.location);
+          console.log("Description:", data.description);
+        }
+      } catch (error) {
+        console.error("Error fetching job data:", error);
       }
     };
-    
-    const result = await client.send(new GetItemCommand(params));
-    
-    if (!result.Item) {
-      return {
-        statusCode: 404,
-        body: JSON.stringify({ error: "Job not found" })
-      };
-    }
-    
-    // Convert DynamoDB format to plain object
-    const job = unmarshall(result.Item);
-    console.log("Fetched job:", job);
-    
-    return {
-      statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "https://www.qavisiontestlab.com",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      },
-      body: JSON.stringify(job)
-    };
-  } catch (error) {
-    console.error("Error fetching job:", error);
-    return {
-      statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "https://www.qavisiontestlab.com",
-        "Access-Control-Allow-Credentials": "true",
-        "Access-Control-Allow-Methods": "GET, OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      },
-      body: JSON.stringify({ error: "Failed to fetch job", details: error.message })
-    };
-  }
+
+    fetchJobData();
+  }, [jobId]);
+
+  return <div>Check your console for job data output.</div>;
 };
+
+export default ApplyData;
