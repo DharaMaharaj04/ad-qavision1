@@ -45,9 +45,7 @@ const ApplyPage = () => {
     setApplication({ ...application, [name]: value });
   };
 
-  const handleFileChange = (e) => {
-    setCvFile(e.target.files[0]);
-  };
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
