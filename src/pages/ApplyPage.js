@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+// Helper function to extract string value from DynamoDB attribute format (if needed)
+const getValue = (attr) => {
+  if (!attr) return "";
+  return typeof attr === "object" && attr.S ? attr.S : attr;
+};
+
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
@@ -13,27 +19,25 @@ const ApplyPage = () => {
   const [cvFile, setCvFile] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Fetch all jobs and find the one with matching jobId
+  // Fetch job details using jobId
   useEffect(() => {
-    const fetchJobs = async () => {
+    const fetchJobDetails = async () => {
       try {
         const response = await fetch(
-          "https://cl80il2pef.execute-api.ap-south-1.amazonaws.com/dev/jobs"
+          `https://2tlb4p195k.execute-api.ap-south-1.amazonaws.com/jobs/${jobId}`
         );
         if (!response.ok) {
-          throw new Error(`Error fetching jobs: ${response.status}`);
+          throw new Error(`Error fetching job details: ${response.status}`);
         }
         const data = await response.json();
-        console.log("Fetched jobs:", data);
-        // Assuming data is an array of job objects
-        const foundJob = data.find((job) => job.jobId === jobId);
-        setJob(foundJob);
+        console.log("Fetched job data:", data);
+        // If data is an array, assume the first element is our job object
+        setJob(Array.isArray(data) ? data[0] : data);
       } catch (error) {
-        console.error("Error fetching jobs:", error);
+        console.error("Error fetching job details:", error);
       }
     };
-
-    fetchJobs();
+    fetchJobDetails();
   }, [jobId]);
 
   const handleChange = (e) => {
@@ -89,19 +93,25 @@ const ApplyPage = () => {
     );
   }
 
+  // Determine the displayed title:
+  const displayedTitle =
+    typeof job.title === "object" ? getValue(job.title) : job.title;
+
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center py-10 px-4">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full">
         {/* Job Details */}
         <div className="mb-6">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Apply for {job.title}
+            Apply for {displayedTitle}
           </h2>
           <p className="text-gray-600 mb-1">
-            <strong>Location:</strong> {job.location}
+            <strong>Location:</strong>{" "}
+            {typeof job.location === "object" ? getValue(job.location) : job.location}
           </p>
           <p className="text-gray-600 mb-1">
-            <strong>Description:</strong> {job.description}
+            <strong>Description:</strong>{" "}
+            {typeof job.description === "object" ? getValue(job.description) : job.description}
           </p>
         </div>
         {/* Application Form */}
@@ -159,7 +169,7 @@ const ApplyPage = () => {
               type="text"
               name="applyForPost"
               id="applyForPost"
-              value={job.title}
+              value={displayedTitle}
               readOnly
               className="mt-1 block w-full border border-gray-300 rounded-md p-2 bg-gray-100 cursor-not-allowed"
             />
