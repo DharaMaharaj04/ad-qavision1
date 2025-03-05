@@ -78,7 +78,6 @@ const ApplyPage = () => {
       console.error("Error applying for job:", error);
 return {
   statusCode: 500,
-  headers: corsHeaders,
   body: JSON.stringify({
     error: "Failed to submit application",
     details: error.message, // Include detailed error
