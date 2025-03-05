@@ -57,7 +57,7 @@ const ApplyPage = () => {
         jobId,
         resume: application.resume,
       };
-
+      
       const response = await fetch(
         "https://ha59zbszd3.execute-api.ap-south-1.amazonaws.com/dev/applications",
         {
@@ -66,9 +66,10 @@ const ApplyPage = () => {
           body: JSON.stringify(payload),
         }
       );
-
+      
       const responseData = await response.json();
-      console.log("Server Response:", responseData);
+      console.log("Full Response:", responseData);
+      
 
       if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
