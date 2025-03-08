@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
-  const [application, setApplication] = useState({ fullName: "", phone: "", email: "", resume: "" });
+  const [application, setApplication] = useState({ fullName: "",experience: "", phone: "", email: "", resume: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -54,6 +54,7 @@ const ApplyPage = () => {
         fullName: application.fullName,
         phone: application.phone,
         email: application.email,
+        experience: application.experience,
         jobId,
         resume: application.resume,
       };
@@ -74,7 +75,7 @@ const ApplyPage = () => {
       if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
       alert("Application Submitted Successfully!");
-      setApplication({ fullName: "", phone: "", email: "", resume: "" });
+      setApplication({ fullName: "", experience: "", phone: "", email: "", resume: "" });
     } catch (error) {
       console.error("Error applying for job:", error);
 return {
@@ -100,6 +101,7 @@ return {
           <input type="text" name="fullName" value={application.fullName} onChange={handleChange} required className="w-full p-2 border" placeholder="Full Name" />
           <input type="email" name="email" value={application.email} onChange={handleChange} required className="w-full p-2 border" placeholder="Email" />
           <input type="text" name="phone" value={application.phone} onChange={handleChange} required className="w-full p-2 border" placeholder="Phone Number" />
+          <input type="number" name="experience" value={application.experience} onChange={handleChange} required className="w-full p-2 border" placeholder="Number of experience" />
           <input type="file" accept=".pdf" onChange={handleFileChange} required className="w-full p-2 border" />
           <button type="submit" disabled={isSubmitting} className="bg-blue-500 text-white py-2 px-4 rounded">
             {isSubmitting ? "Submitting..." : "Submit"}
