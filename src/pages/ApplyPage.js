@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 const ApplyPage = () => {
   const { jobId } = useParams();
   const [job, setJob] = useState(null);
-  const [application, setApplication] = useState({ fullName: "",experience: "", phone: "", email: "", resume: "" });
+  const [application, setApplication] = useState({ fullName: "", experience: "", phone: "", email: "", resume: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const fileInputRef = useRef(null); // Reference for file input
 
   useEffect(() => {
     const fetchJobDetails = async () => {
@@ -69,29 +70,23 @@ const ApplyPage = () => {
       );
       
       const responseData = await response.json();
-     // console.log("Full Response:", responseData);
-      
+      console.log("Full Response:", responseData);
 
       if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
       alert("Application Submitted Successfully!");
       setApplication({ fullName: "", experience: "", phone: "", email: "", resume: "" });
+
+      // Reset the file input manually
+      if (fileInputRef.current) fileInputRef.current.value = "";
     } catch (error) {
       console.error("Error applying for job:", error);
-return {
-  statusCode: 500,
-  body: JSON.stringify({
-    error: "Failed to submit application",
-    details: error.message, // Include detailed error
-    stack: error.stack, // Optional: Include stack trace for debugging
-  }),
-};
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  if (!job) return <div className="flex items-center justify-center bg-gray-100">Loading job details...</div>;
+  if (!job) return <div className="min-h-screen flex items-center justify-center bg-gray-100">Loading job details...</div>;
 
   return (
     <div className="bg-gray-100 flex items-center justify-center py-10 px-4 mt-4 md:mt-16">
@@ -102,7 +97,7 @@ return {
           <input type="email" name="email" value={application.email} onChange={handleChange} required className="w-full p-2 border" placeholder="Email" />
           <input type="text" name="phone" value={application.phone} onChange={handleChange} required className="w-full p-2 border" placeholder="Phone Number" />
           <input type="number" name="experience" value={application.experience} onChange={handleChange} required className="w-full p-2 border" placeholder="Number of experience" />
-          <input type="file" accept=".pdf" onChange={handleFileChange} required className="w-full p-2 border" />
+          <input type="file" accept=".pdf" ref={fileInputRef} onChange={handleFileChange} required className="w-full p-2 border" />
           <button type="submit" disabled={isSubmitting} className="bg-blue-500 text-white py-2 px-4 rounded">
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
@@ -113,4 +108,3 @@ return {
 };
 
 export default ApplyPage;
-
