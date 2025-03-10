@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 
 const ApplyPage = () => {
   const { jobId } = useParams();
+  const fileInputRef = useRef(null); // Ref for the file input
   const [job, setJob] = useState(null);
-  const [application, setApplication] = useState({ fullName: "",experience: "", phone: "", email: "", resume: "" });
+  const [application, setApplication] = useState({ fullName: "", experience: "", phone: "", email: "", resume: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
@@ -26,7 +27,7 @@ const ApplyPage = () => {
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
-    
+
     reader.readAsDataURL(file);
     reader.onload = () => {
       const base64String = reader.result.split(",")[1]; // Remove metadata
@@ -58,7 +59,7 @@ const ApplyPage = () => {
         jobId,
         resume: application.resume,
       };
-      
+
       const response = await fetch(
         "https://ha59zbszd3.execute-api.ap-south-1.amazonaws.com/dev/applications",
         {
@@ -67,25 +68,20 @@ const ApplyPage = () => {
           body: JSON.stringify(payload),
         }
       );
-      
+
       const responseData = await response.json();
       console.log("Full Response:", responseData);
-      
 
       if (!response.ok) throw new Error(responseData.error || "Failed to submit application");
 
       alert("Application Submitted Successfully!");
       setApplication({ fullName: "", experience: "", phone: "", email: "", resume: "" });
+
+      if (fileInputRef.current) {
+        fileInputRef.current.value = ""; // Clear file input
+      }
     } catch (error) {
       console.error("Error applying for job:", error);
-return {
-  statusCode: 500,
-  body: JSON.stringify({
-    error: "Failed to submit application",
-    details: error.message, // Include detailed error
-    stack: error.stack, // Optional: Include stack trace for debugging
-  }),
-};
     } finally {
       setIsSubmitting(false);
     }
@@ -102,7 +98,7 @@ return {
           <input type="email" name="email" value={application.email} onChange={handleChange} required className="w-full p-2 border" placeholder="Email" />
           <input type="text" name="phone" value={application.phone} onChange={handleChange} required className="w-full p-2 border" placeholder="Phone Number" />
           <input type="number" name="experience" value={application.experience} onChange={handleChange} required className="w-full p-2 border" placeholder="Number of experience" />
-          <input type="file" accept=".pdf" onChange={handleFileChange} required className="w-full p-2 border" />
+          <input type="file" accept=".pdf" onChange={handleFileChange} required className="w-full p-2 border" ref={fileInputRef} />
           <button type="submit" disabled={isSubmitting} className="bg-blue-500 text-white py-2 px-4 rounded">
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
