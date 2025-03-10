@@ -86,7 +86,7 @@ const ApplyPage = () => {
     }
   };
 
-  if (!job) return <div className="min-h-screen flex items-center justify-center bg-gray-100">Loading job details...</div>;
+  if (!job) return <div className=" flex items-center justify-center bg-gray-100">Loading job details...</div>;
 
   return (
     <div className="bg-gray-100 flex items-center justify-center py-10 px-4 mt-4 md:mt-16">
