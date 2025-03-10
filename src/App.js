@@ -46,6 +46,7 @@ import Blog from "./pages/Blog";
 import SinglePost from "./pages/SinglePost";
 import ApplyPage from "./pages/ApplyPage";
 import AddJob from "./pages/AddJob";
+import TawkToChat from "./TawkToChat"; 
 
 function App() {
   //const sectionTop = useRef();
@@ -59,6 +60,7 @@ function App() {
       </div>
       {/* Desktop Navbar for larger screens */}
       <div className="hidden md:block">
+      <TawkToChat />
         <Navbar />
       </div>
         <Routes>
