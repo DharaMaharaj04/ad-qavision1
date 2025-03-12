@@ -89,7 +89,7 @@ const ApplyPage = () => {
   if (!job) return <div className="flex items-center justify-center bg-gray-100">Loading job details...</div>;
 
   return (
-    <div className="bg-gray-100 flex items-center justify-center py-10 px-4 py-10 pt-20">
+    <div className="bg-gray-100 flex items-center justify-center py-10 px-4 py-10 pt-4 md:pt-20">
       <div className="bg-white rounded-lg shadow-lg p-8 max-w-xl w-full">
         <h2 className="text-3xl font-bold text-gray-800 mb-2">Apply for {job?.title}</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
