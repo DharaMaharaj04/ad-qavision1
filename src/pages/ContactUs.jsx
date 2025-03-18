@@ -155,7 +155,7 @@ const ContactUs = () => {
                   name={field}
                   value={formData[field]}
                   onChange={handleInputChange}
-                  placeholder={`${field.replace(/([A-Z])/g, " $1")}*`}
+                  placeholder={`${field.replace(/([A-Z])/g, " $1").replace(/^\w/, (c) => c.toUpperCase())}*`}
                   className={`w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 ${
                     errors[field] ? "border-red-500 ring-red-500" : "border-blue-300 focus:ring-blue-700"
                   }`}

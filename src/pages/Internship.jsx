@@ -233,7 +233,7 @@ const Internship = () => {
           and take the first step towards a successful career in QA.
         </p>
         <a
-          href="/carrers"
+          href="/careers"
           className="inline-block px-8 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-blue-700 hover:text-white transition"
         >
           Let’s Shape Your Future!
