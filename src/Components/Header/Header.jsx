@@ -131,12 +131,13 @@ const Header = ({ topRef }) => {
 </div>
         </div>
         <div className="md:mt-4">
-          <img
-            className="h-[350px] sm:h-[350px] md:h-[420px] w-full sm:w-full w-2/5 bg-no-repeat bg-center relative z-0 rounded-xl"
-            src={Mobtest}
-            alt="header-phone"
-          ></img>
-        </div>
+  <img
+    className="h-[350px] sm:h-[350px] md:h-[420px] w-full sm:w-full w-2/5 bg-no-repeat bg-center relative z-0 rounded-xl"
+    src={Mobtest}
+    alt="mobile-testing-gif"
+  />
+</div>
+        
       </div>
     </div>
   );
