@@ -26,7 +26,7 @@ const AdvancedUIUXTesting = () => {
     </div>
       {/* Title Section */}
       <div className="container mx-auto text-center mb-12 pt-8 px-4">
-        <h1 className="text-3xl font-bold text-gray-800">
+        <h1 className="text-3xl font-bold text-gray-900">
           Advanced UI/UX Testing Services for Appeal & User-friendliness
         </h1>
         <p className="mt-4 text-lg text-gray-700">
